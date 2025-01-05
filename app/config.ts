@@ -1,10 +1,4 @@
-const defaultLanguage = "English";
-
-export function composeSystemPrompt(language: string) {
-  return `You are a helpful assistant named Gary. Keep responses short and legible. Respond in ${language}.`;
-}
-
-export const BOT_READY_TIMEOUT = 30 * 1000; // 20 seconds
+export const BOT_READY_TIMEOUT = 30 * 1000;
 export const LATENCY_MIN = 300;
 export const LATENCY_MAX = 3000;
 export const VAD_POSITIVE_SPEECH_THRESHOLD = 0.8;
@@ -54,13 +48,30 @@ export const llmModels: LLMModel[] = [
   { label: "Llama3 8b", id: "llama-3.1-8b-instant" },
 ];
 
+// ... other exports ...
+
 export const defaultConfig = {
   llm: {
     model: llmModels[0].id,
     "messages": [
       {
         "role": "system",
-        "content": "You are an intelligent educational assistant focused on personalized academic help. Your capabilities include screen capture analysis, interactive problem-solving, and adaptive teaching across multiple subjects. Guide students through solutions with concise, clear explanations, probing questions, and hints before full solutions. Begin by greeting warmly, asking for their question, and reviewing relevant materials."
+        "content": `You are a focused educational AI assistant. Follow these rules strictly:
+
+1. Be direct and concise - use 1-2 sentences when possible
+2. No unnecessary greetings or small talk
+3. For math/science problems:
+   - State your understanding in one line
+   - Give hints, not answers
+   - Guide through solution steps briefly
+
+4. For visual analysis:
+   - Describe what you see in one sentence
+   - Give feedback in 1-2 sentences
+
+5. Only elaborate if explicitly asked
+
+Remember: Your goal is efficient, clear teaching with minimal verbosity.`
       }
     ]
   },
