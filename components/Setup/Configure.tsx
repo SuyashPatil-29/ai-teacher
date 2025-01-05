@@ -41,7 +41,7 @@ export const Configure: React.FC<ConfigureProps> = React.memo(
 
     return (
       <>
-        <section className="flex flex-col flex-wrap gap-3 lg:gap-4">
+        {/* <section className="flex flex-col flex-wrap gap-3 lg:gap-4">
           <DeviceSelect hideMeter={false} />
           
           <div className="flex flex-col gap-2">
@@ -57,7 +57,7 @@ export const Configure: React.FC<ConfigureProps> = React.memo(
               ))}
             </Select>
           </div>
-        </section>
+        </section> */}
 
         {!inSession && (
           <section className="flex flex-col gap-4 border-y border-primary-hairline py-4 mt-4">

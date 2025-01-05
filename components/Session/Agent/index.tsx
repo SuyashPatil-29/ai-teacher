@@ -72,7 +72,7 @@ export const Agent: React.FC<{
         </div>
         <VoiceClientVideo
           participant="local"
-          mirror={false}
+          mirror={true}
           className={styles.video}
         />
       </div>
