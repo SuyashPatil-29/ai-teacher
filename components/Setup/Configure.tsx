@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import { useVoiceClient } from "realtime-ai-react";
+import { LANGUAGES } from "@/rtvi.config";
+import { useLanguageStore } from "@/lib/stores/languageStore";
 import HelpTip from "../ui/helptip";
 import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
-
+import { Select } from "../ui/select";
 import DeviceSelect from "./DeviceSelect";
 
 interface ConfigureProps {
@@ -17,10 +19,10 @@ export const Configure: React.FC<ConfigureProps> = React.memo(
   ({ startAudioOff, handleStartAudioOff, inSession = false }) => {
     const [showPrompt, setshowPrompt] = useState<boolean>(false);
     const modalRef = useRef<HTMLDialogElement>(null);
+    const voiceClient = useVoiceClient();
+    const { selectedLanguage, setLanguage } = useLanguageStore();
 
     useEffect(() => {
-      // Modal effect
-      // Note: backdrop doesn't currently work with dialog open, so we use setModal instead
       const current = modalRef.current;
 
       if (current && showPrompt) {
@@ -31,10 +33,30 @@ export const Configure: React.FC<ConfigureProps> = React.memo(
       return () => current?.close();
     }, [showPrompt]);
 
+    const handleLanguageChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
+      if (voiceClient) {
+        await setLanguage(e.target.value, voiceClient);
+      }
+    };
+
     return (
       <>
         <section className="flex flex-col flex-wrap gap-3 lg:gap-4">
           <DeviceSelect hideMeter={false} />
+          
+          <div className="flex flex-col gap-2">
+            <Label>Language</Label>
+            <Select
+              value={selectedLanguage}
+              onChange={handleLanguageChange}
+            >
+              {LANGUAGES.map((lang) => (
+                <option key={lang.value} value={lang.value}>
+                  {lang.name}
+                </option>
+              ))}
+            </Select>
+          </div>
         </section>
 
         {!inSession && (

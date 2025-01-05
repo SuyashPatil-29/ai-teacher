@@ -8,6 +8,35 @@ export const defaultServices = {
   tts: "cartesia",
 };
 
+export interface Language {
+  name: string;
+  value: string;
+  ttsVoice: string;
+}
+
+export const LANGUAGES: Language[] = [
+  {
+    name: "English",
+    value: "en",
+    ttsVoice: "79a125e8-cd45-4c13-8a67-188112f4dd22" // British voice
+  },
+  {
+    name: "Hindi",
+    value: "hi",
+    ttsVoice: "79a125e8-cd45-4c13-8a67-188112f4dd22" // Hindi voice
+  },
+  {
+    name: "Tamil",
+    value: "ta",
+    ttsVoice: "79a125e8-cd45-4c13-8a67-188112f4dd22" // Tamil voice
+  },
+  {
+    name: "Telugu",
+    value: "te",
+    ttsVoice: "79a125e8-cd45-4c13-8a67-188112f4dd22" // Telugu voice
+  }
+];
+
 export const defaultConfig = [
   {
     service: "tts",
