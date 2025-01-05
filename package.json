@@ -22,7 +22,8 @@
     "realtime-ai": "0.1.6",
     "realtime-ai-daily": "0.1.6",
     "realtime-ai-react": "0.1.6",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@types/node": "^20",
