@@ -40,7 +40,16 @@ export const LANGUAGES: Language[] = [
 export const defaultConfig = [
   {
     service: "tts",
-    options: [{ name: "voice", value: "79a125e8-cd45-4c13-8a67-188112f4dd22" }],
+    options: [
+      {
+        "name": "model",
+        "value": "sonic"
+      },
+      {
+        "name": "voice",
+        "value": "bdab08ad-4137-4548-b9db-6142854c7525"
+      }
+    ],
   },
   {
     service: "llm",
@@ -75,5 +84,5 @@ Remember: Brevity and clarity are your primary goals.`,
 ];
 
 export const TTS_VOICES = [
-  { name: "Britsh Lady", value: "79a125e8-cd45-4c13-8a67-188112f4dd22" },
+  { name: "Britsh Lady", value: "bdab08ad-4137-4548-b9db-6142854c7525" },
 ];
