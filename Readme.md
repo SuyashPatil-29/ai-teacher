@@ -61,6 +61,28 @@ DAILY_BOTS_URL=your_daily_bots_url
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## 🏗️ Build and Run the Application with Docker"
+
+Follow these steps to build and run the application:
+
+1. Build & Run the Containers:
+
+```bash
+cd ai-teacher
+```
+```bash
+docker build -t ai-app .
+```
+```bash
+docker run -d -p 3000:3000 ai-app
+```
+
+2. Access the application in your browser:
+
+```
+http://localhost:3000
+```
+
 ## Usage
 
 1. **Initial Setup**:
