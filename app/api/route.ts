@@ -1,5 +1,5 @@
 // [POST] /api
-import { defaultBotProfile, defaultMaxDuration } from "./../../rtvi.config";
+import { defaultBotProfile, defaultMaxDuration, serviceOptions } from "./../../rtvi.config";
 
 export async function POST(request: Request) {
   const { services, config } = await request.json();
@@ -13,9 +13,11 @@ export async function POST(request: Request) {
   const payload = {
     bot_profile: defaultBotProfile,
     max_duration: defaultMaxDuration,
+    service_options: serviceOptions,
     services,
     api_keys: {
       openai: process.env.OPENAI_API_KEY,
+      openai_tts: process.env.OPENAI_API_KEY,
     },
     config: [...config],
   };
